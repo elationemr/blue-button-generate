@@ -22,9 +22,21 @@ var createContext = (function () {
             this.references[referenceKey] = index;
             return "#" + referenceKey + index;
         },
+        nextHtmlReference: function (referenceKey) {
+            var htmlKey = "html-" + referenceKey;
+            var index = this.references[htmlKey] || 0;
+            ++index;
+            this.references[htmlKey] = index;
+            return referenceKey + index;
+        },
         sameReference: function (referenceKey) {
             var index = this.references[referenceKey] || 0;
             return "#" + referenceKey + index;
+        },
+        sameHtmlReference: function (referenceKey) {
+            var htmlKey = "html-" + referenceKey;
+            var index = this.references[htmlKey] || 0;
+            return referenceKey + index;
         }
     };
 
